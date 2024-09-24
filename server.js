@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const Products = require('./models/Products');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 console.log('Adidas Server is starting');
 connectDB();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/api/products', async (req, res) => {
